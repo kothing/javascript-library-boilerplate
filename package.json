@@ -20,23 +20,32 @@
   "devDependencies": {
     "@babel/cli": "^7.18.6",
     "@babel/core": "^7.15.8",
+    "@babel/eslint-parser": "^7.18.2",
     "@babel/plugin-proposal-class-properties": "^7.14.5",
     "@babel/preset-env": "^7.15.8",
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
     "babel-loader": "^8.2.2",
     "boxen": "^5.1.2",
-    "clean-webpack-plugin": "^4.0.0",
     "chalk": "^4.1.2",
+    "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^9.0.1",
     "cross-env": "^7.0.3",
     "css-loader": "^6.4.0",
     "css-minimizer-webpack-plugin": "^3.1.1",
-    "eslint": "^7.28.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-import-resolver-webpack": "^0.13.1",
-    "eslint-plugin-prettier": "^4.0.0",
+    "eslint": "^8.9.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-import-resolver-webpack": "^0.13.2",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.0.0",
     "figlet": "^1.5.2",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.3.2",
+    "husky": "^7.0.4",
+    "less": "^4.1.2",
+    "less-loader": "^10.2.0",
+    "lint-staged": "^13.0.3",
     "json-loader": "^0.5.7",
     "mini-css-extract-plugin": "^2.4.2",
     "postcss": "^7.0.39",
@@ -56,5 +65,22 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:meta-explore/webpack-js-library-boilerplate"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
+  "lint-staged": {
+    "*.{js,html}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{less,scss,css}": "stylelint --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
   }
 }
