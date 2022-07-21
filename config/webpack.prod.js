@@ -1,17 +1,19 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const { merge } = require('webpack-merge')
 
-const paths = require('./paths')
+const { paths } = require('./utils');
 const common = require('./webpack.common')
 
 module.exports = merge(common, {
-  mode: 'production',
+  mode: "production",
   devtool: false,
   output: {
     path: paths.build,
-    publicPath: '/',
-    filename: 'js/[name].[contenthash].bundle.js',
+    publicPath: "./",
+    filename: "js/[name].[contenthash].bundle.js",
   },
   module: {
     rules: [
@@ -20,15 +22,15 @@ module.exports = merge(common, {
         use: [
           MiniCssExtractPlugin.loader,
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
               importLoaders: 2,
               sourceMap: false,
               modules: false,
             },
           },
-          'postcss-loader',
-          'sass-loader',
+          "postcss-loader",
+          "sass-loader",
         ],
       },
     ],
@@ -36,15 +38,31 @@ module.exports = merge(common, {
   plugins: [
     // Extracts CSS into separate files
     new MiniCssExtractPlugin({
-      filename: 'styles/[name].[contenthash].css',
-      chunkFilename: '[id].css',
+      filename: "styles/[name].[contenthash].css",
+      chunkFilename: "[id].css",
+    }),
+    // Removes/cleans build folders and unused assets when rebuilding
+    new CleanWebpackPlugin(),
+
+    // Copies files from target to destination folder
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: paths.public,
+          to: "assets",
+          globOptions: {
+            ignore: ["*.DS_Store"],
+          },
+          noErrorOnMissing: true,
+        },
+      ],
     }),
   ],
   optimization: {
     minimize: true,
-    minimizer: [new CssMinimizerPlugin(), '...'],
+    minimizer: [new CssMinimizerPlugin(), "..."],
     runtimeChunk: {
-      name: 'runtime',
+      name: "runtime",
     },
   },
   performance: {
@@ -52,4 +70,4 @@ module.exports = merge(common, {
     maxEntrypointSize: 512000,
     maxAssetSize: 512000,
   },
-})
+});
