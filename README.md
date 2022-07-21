@@ -2,8 +2,8 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-Webpack 5 boilerplate using Babel and PostCSS.
-
+Webpack 5 boilerplate using Babel and PostCSS.  
+With Eslint+Prettier+husky+lint-staged
 ## Installation
 
 Clone this repo and npm install.
