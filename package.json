@@ -63,7 +63,7 @@
   "dependencies": {},
   "repository": {
     "type": "git",
-    "url": "git@github.com:meta-explore/webpack-js-library-boilerplate"
+    "url": "git@github.com:kothing/javascript-library-boilerplate"
   },
   "browserslist": [
     "> 1%",
