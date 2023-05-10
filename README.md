@@ -1,4 +1,4 @@
-# 📦 javascript-library-boilerplate
+# 📦 Webpack javascript library boilerplate
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
@@ -73,12 +73,8 @@ npm run build
 
 - [`eslint`](https://github.com/eslint/eslint) - Enforce styleguide across application
 - [`eslint-config-prettier`](https://github.com/prettier/eslint-config-prettier) - Implement prettier rules
-  - - [`prettier`](https://github.com/prettier/prettier) - Dependency for `prettier-webpack-plugin` plugin
+- [`prettier`](https://github.com/prettier/prettier) - Dependency for `prettier-webpack-plugin` plugin
 - [`eslint-import-resolver-webpack`](https://github.com/benmosher/eslint-plugin-import/tree/master/resolvers/webpack) - Throw exceptions for import/export in webpack
-
-## Author
-
-- [Meta Explore](https://meta-explore.github.io)
 
 ## License
 
